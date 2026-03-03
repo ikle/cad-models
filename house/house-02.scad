@@ -65,6 +65,21 @@ module BY (lo, hi, x, y, dy, ly = be, ry = be)
 	for (zi = [lo:hi]) ybeam (x, y, zi, dy, ly, ry);
 }
 
+module ETX (lo, hi, y, ax, az, bx, bz, cx, cz, dx, dz, le = be, re = be)
+{
+	for (zi = [lo:hi]) {
+		x0 = (ax * (zi - bz) + bx * (az - zi)) / (az - bz);
+		x1 = (cx * (zi - dz) + dx * (cz - zi)) / (cz - dz);
+
+		xbeam (x0, y, zi, x1 - x0, le, re);
+	}
+}
+
+module TX (lo, hi, y, l0, r0, z0, l1, r1, z1, le = be, re = be)
+{
+	ETX (lo, hi, y, l0, z0, r0, z1, l1, z0, r1, z1, le, re);
+}
+
 module FB (x, y, zi, dx, dy, dz)
 {
 	z = bh * zi;
@@ -115,13 +130,26 @@ xr = x3 - (hbw + fdx + oww + fdx);
 
 BX ( 0, 17, x0, y0, x1 - x0, be, fdx);
 BX (18, 22, x0, y0, x4 - x0);
-
 color ([.7, .5, .2, 1]) BX (23, 23, x0, y0, x4 - x0);
+BX (24, 28, x0, y0, x4 - x0);
 
 BX ( 0, 17, xl, y0, 0, fbe, fbe);
 BX ( 0, 17, xr, y0, 0, fbe, fbe);
 
 BX ( 0, 17, x3, y0, x4 - x3, fdx, be);
+
+el = (x0 + x1) / 2;
+er = (x3 + x4) / 2;
+
+BX (29, 34, x0, y0, el - x0);
+ETX (35, 42, y0, x0, 34, x2, 56, el, 34, el + (x2 - x0), 56);
+
+BX (29, 42, xl, y0, xr - xl);
+
+BX (29, 34, er, y0, x4 - er);
+ETX (35, 42, y0, er, 34, er - (x4 - x2), 56, x4, 34, x2, 56);
+
+TX (43, 56, y0, x0, x2, 34, x4, x2, 56);
 
 /* X at Y1 */
 
@@ -131,9 +159,19 @@ BX (21, 22, x0, y1, x5 - x0);
 
 color ([.7, .5, .2, 1]) BX (23, 23, x0, y1, x5 - x0);
 
-BX (24, 34, x0, y1, x0 - x0, be, xa - x0 - bw - be - idw);
+w2w = xa - x0 - bw - be - idw;
+w2x = w2w - hbw;
+
+BX (24, 34, x0, y1, x0 - x0, be, w2w);
 BX (24, 34, xa, y1, xa - xa);
+BX (35, 38, xa, y1, xa - xa);
 BX (24, 34, xb, y1, x4 - xb);
+
+TX (35, 38, y1, x0, x2, 34, w2x, w2x, 56, be, 0);
+TX (39, 42, y1, x0, x2, 34,  xa,  xa, 56);
+TX (43, 56, y1, x0, x2, 34,  x4,  x2, 56);
+
+TX (35, 42, y1, xb, xb, 34,  x4,  x2, 56);
 
 bath_w = (x4 - x3 - bw) - idw;
 
@@ -160,16 +198,29 @@ BX ( 1,  8, x5, y2, 0);
 BX ( 0, 17, x0, y3, x0 - x0, be, be2);
 BX (18, 20, x0, y3, x4 - x0);
 BX (21, 22, x0, y3, x5 - x0);
+BX (27, 34, x0, y3, x0 - x0, be, be4);
+ETX (35, 44, y3, x0, 34, x2, 56, x0 + be4, 34, x2 + be4, 56, be, 0);
 
 color ([.7, .5, .2, 1]) BX (23, 23, x0, y3, x5 - x0);
 
-BX ( 0, 17, x1, y3, x1 - x1, be , be2);
+BX (24, 26, x0, y3, xa - x0);
+
+BX ( 0, 17, x1, y3, x1 - x1, be, be2);
+
+BX (27, 44, xa, y3, xa - xa);
+
+BX (24, 26, xb, y3, x4 - xb);
+BX (27, 44, xb, y3, xb - xb);
 
 BX ( 0, 17, x3, y3, x3 - x3, be2, be2);
 
 BX ( 0, 17, x4, y3, x4 - x4, be2, be );
+BX (27, 34, x4, y3, x4 - x4, be4, be );
+ETX (35, 44, y3, x4 - be4, 34, x2 - be4, 56, x4, 34, x2, 56, 0, be);
 
 BX ( 1,  8, x5, y3, 0);
+
+TX (45, 56, y3, x0, x2, 34, x4, x2, 56);
 
 /* X at Y4 */
 
