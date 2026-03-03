@@ -81,12 +81,29 @@ y0 = -hbw; y1 = y0 + gy; y2 = y1 + gy; y3 = y2 + gy; y4 = y3 + gy;
 xa = x2 - gx / 2;
 xb = x2 + gx / 2;
 
+ya = -1500;
+
 /* floors, note: alpha color channel does not work good in prefiew */
 
 // FB (x0, y0, -1, x4 - x0 + bw, y4 - y0 + bw, bh);
 // FB (x4, y1, -1, x5 - x4 + bw, y4 - y1 + bw, bh);
 
 // FB (x0, y0, 23, x4 - x0 + bw, y4 - y0 + bw, bh * 1.5);
+
+/* X at YA */
+
+BX ( 0,  0, x1, ya, xa - x1);
+BX ( 1,  6, x1, ya, x1 - x1);
+BX ( 7,  7, x1, ya, xa - x1);
+BX (20, 20, x1, ya, x3 - x1);
+
+BX ( 1,  6, xa, ya, xa - xa);
+
+BX ( 0,  0, xb, ya, x3 - xb);
+BX ( 1,  6, xb, ya, xb - xb);
+BX ( 7,  7, xb, ya, x3 - xb);
+
+BX ( 1,  6, x3, ya, x3 - x3);
 
 /* X at Y0 */
 
@@ -209,10 +226,16 @@ BY (24, 30, x0, y4, y4 - y4);
 
 /* Y at X1 */
 
-color ([.7, .5, .2, 1]) BY (-1, -1, x1, y0, y3 - y0);
+color ([.7, .5, .2, 1]) BY (-1, -1, x1, ya, y3 - ya);
 
-BY ( 0, 18, x1, y0, y0 - y0, be , be2);
-BY (19, 21, x1, y0, y3 - y0);
+BY ( 0,  0, x1, ya, y0 - ya, be , be2);
+BY ( 1,  6, x1, ya, ya - ya);
+BY ( 7,  7, x1, ya, y0 - ya, be , be2);
+BY (19, 19, x1, ya, y3 - ya);
+
+BY ( 1,  6, x1, y0, y0 - y0, be , be2);
+BY ( 8, 18, x1, y0, y0 - y0, be , be2);
+BY (20, 21, x1, y0, y3 - y0);
 
 BY ( 0, 17, x1, y1, y1 - y1, be2, be2);
 BY (18, 18, x1, y1, y3 - y1, be2, be );
@@ -221,7 +244,10 @@ BY ( 0, 17, x1, y3, y3 - y3, be3, be );
 
 /* Y at XA */
 
+color ([.7, .5, .2, 1]) BY (-1, -1, xa, ya, ya - ya);
 color ([.7, .5, .2, 1]) BY (23, 23, xa, y0, y4 - y0);
+
+BY ( 0,  7, xa, ya, ya - ya);
 
 BY (49, 50, xa, y0, y4 - y0, be3, be3);
 
@@ -247,7 +273,10 @@ BY (55, 56, x2, y0, y4 - y0, be3, be3);
 
 /* Y at XB */
 
+color ([.7, .5, .2, 1]) BY (-1, -1, xb, ya, ya - ya);
 color ([.7, .5, .2, 1]) BY (23, 23, xb, y0, y4 - y0);
+
+BY ( 0,  7, xb, ya, ya - ya);
 
 BY (49, 50, xb, y0, y4 - y0, be3, be3);
 
@@ -266,12 +295,19 @@ BY (24, 31, xb, y4, 0);
 
 /* Y at X3 */
 
-color ([.7, .5, .2, 1]) BY (-1, -1, x3, y0, y3 - y0);
+color ([.7, .5, .2, 1]) BY (-1, -1, x3, ya, y3 - ya);
 
 bww = (x3 - x1 - bw) - (idw + be2);
 
-BY ( 0, 14, x3, y0, y1 - y0, be, be2);
-BY (15, 21, x3, y0, y3 - y0);
+BY ( 0,  0, x3, ya, y1 - ya, be, be2);
+BY ( 1,  6, x3, ya, ya - ya);
+BY ( 7,  7, x3, ya, y1 - ya, be, be2);
+BY (19, 19, x3, ya, y3 - ya);
+
+BY ( 1,  6, x3, y0, y1 - y0, be, be2);
+BY ( 8, 14, x3, y0, y1 - y0, be, be2);
+BY (15, 18, x3, y0, y3 - y0);
+BY (20, 21, x3, y0, y3 - y0);
 
 BY ( 0, 14, x3, y3, y3 - y3, bww);
 
