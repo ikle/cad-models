@@ -114,6 +114,8 @@ BX (21, 22, x0, y1, x5 - x0);
 
 color ([.7, .5, .2, 1]) BX (23, 23, x0, y1, x5 - x0);
 
+BX (24, 34, x0, y1, x0 - x0, be, xa - x0 - bw - be - idw);
+BX (24, 34, xa, y1, xa - xa);
 BX (24, 34, xb, y1, x4 - xb);
 
 bath_w = (x4 - x3 - bw) - idw;
