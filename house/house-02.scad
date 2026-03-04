@@ -199,24 +199,24 @@ BX ( 0, 17, x0, y3, x0 - x0, be, be2);
 BX (18, 20, x0, y3, x4 - x0);
 BX (21, 22, x0, y3, x5 - x0);
 BX (27, 34, x0, y3, x0 - x0, be, be4);
-ETX (35, 44, y3, x0, 34, x2, 56, x0 + be4, 34, x2 + be4, 56, be, 0);
+ETX (35, 44, y3, x0, 34, x2, 56, x0 + be3, 34, x2 + be3, 56, be, 0);
 
 color ([.7, .5, .2, 1]) BX (23, 23, x0, y3, x5 - x0);
 
-BX (24, 26, x0, y3, xa - x0);
+BX (24, 26, x0, y3, xa - x0, be , be2);
 
 BX ( 0, 17, x1, y3, x1 - x1, be2, be2);
 
-BX (27, 44, xa, y3, xa - xa);
+BX (27, 44, xa, y3, xa - xa, be2, be2);
 
-BX (24, 26, xb, y3, x4 - xb);
-BX (27, 44, xb, y3, xb - xb);
+BX (24, 26, xb, y3, x4 - xb, be2, be );
+BX (27, 44, xb, y3, xb - xb, be2, be2);
 
 BX ( 0, 17, x3, y3, x3 - x3, be2, be2);
 
 BX ( 0, 17, x4, y3, x4 - x4, be2, be );
-BX (27, 34, x4, y3, x4 - x4, be4, be );
-ETX (35, 44, y3, x4 - be4, 34, x2 - be4, 56, x4, 34, x2, 56, 0, be);
+BX (27, 34, x4, y3, x4 - x4, be3, be );
+ETX (35, 44, y3, x4 - be3, 34, x2 - be3, 56, x4, 34, x2, 56, 0, be);
 
 BX ( 0,  7, x5, y3, 0);
 
