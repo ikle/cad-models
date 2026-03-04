@@ -279,17 +279,17 @@ BY (24, 30, x0, y4, y4 - y4);
 
 color ([.7, .5, .2, 1]) BY (-1, -1, x1, ya, y3 - ya);
 
-BY ( 0,  0, x1, ya, y0 - ya, be , be2);
+BY ( 0,  0, x1, ya, y0 - ya);
 BY ( 1,  6, x1, ya, ya - ya);
-BY ( 7,  7, x1, ya, y0 - ya, be , be2);
+BY ( 7,  7, x1, ya, y0 - ya);
 BY (19, 19, x1, ya, y3 - ya);
 
-BY ( 1,  6, x1, y0, y0 - y0, be , be2);
-BY ( 8, 18, x1, y0, y0 - y0, be , be2);
+BY ( 1,  6, x1, y0, y0 - y0);
+BY ( 8, 18, x1, y0, y0 - y0);
 BY (20, 21, x1, y0, y3 - y0);
 
-BY ( 0, 17, x1, y1, y1 - y1, be2, be2);
-BY (18, 18, x1, y1, y3 - y1, be2, be );
+BY ( 0, 17, x1, y1, y1 - y1, be , be2);
+BY (18, 18, x1, y1, y3 - y1);
 
 BY ( 0, 17, x1, y3, y3 - y3, be3, be );
 
