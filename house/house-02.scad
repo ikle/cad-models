@@ -93,8 +93,11 @@ gy = 2000 + bw;
 x0 = -hbw; x1 = x0 + gx; x2 = x1 + gx; x3 = x2 + gx; x4 = x3 + gx; x5 = x4 + gx;
 y0 = -hbw; y1 = y0 + gy; y2 = y1 + gy; y3 = y2 + gy; y4 = y3 + gy;
 
+xi = (x0 + x1) / 2;
 xa = (x1 + x2) / 2;
 xb = (x2 + x3) / 2;
+xj = (x3 + x4) / 2;
+xk = (x4 + x5) / 2;
 
 ya = -1500;
 
@@ -275,9 +278,13 @@ BY ( 8, 16, x0, y3, y3 - y3, wbe, be);
 BY ( 1,  6, x0, y4, y4 - y4);
 BY (24, 30, x0, y4, y4 - y4);
 
+/* Y at XI */
+
+color ([.7, .5, .2, 1]) BY (-1, -1, xi, y0, y4 - y0, 0, 0);
+
 /* Y at X1 */
 
-color ([.7, .5, .2, 1]) BY (-1, -1, x1, ya, y3 - ya);
+color ([.7, .5, .2, 1]) BY (-1, -1, x1, ya, y4 - ya, be, 0);
 
 BY ( 0,  0, x1, ya, y0 - ya);
 BY ( 1,  6, x1, ya, ya - ya);
@@ -295,7 +302,7 @@ BY ( 0, 17, x1, y3, y3 - y3, be3, be );
 
 /* Y at XA */
 
-color ([.7, .5, .2, 1]) BY (-1, -1, xa, ya, ya - ya);
+color ([.7, .5, .2, 1]) BY (-1, -1, xa, ya, y4 - ya);
 color ([.7, .5, .2, 1]) BY (23, 23, xa, y0, y4 - y0);
 
 BY ( 0,  7, xa, ya, ya - ya);
@@ -317,6 +324,7 @@ BY (24, 31, xa, y4, 0);
 
 /* Y at X2 */
 
+color ([.7, .5, .2, 1]) BY (-1, -1, x2, ya, y4 - ya, 0, 0);
 color ([.7, .5, .2, 1]) BY (23, 23, x2, y0, 0);
 
 BY (24, 52, x2, y0, 0);
@@ -326,7 +334,7 @@ BY (55, 56, x2, y0, y4 - y0, be3, be3);
 
 /* Y at XB */
 
-color ([.7, .5, .2, 1]) BY (-1, -1, xb, ya, ya - ya);
+color ([.7, .5, .2, 1]) BY (-1, -1, xb, ya, y4 - ya);
 color ([.7, .5, .2, 1]) BY (23, 23, xb, y0, y4 - y0);
 
 BY ( 0,  7, xb, ya, ya - ya);
@@ -348,7 +356,7 @@ BY (24, 31, xb, y4, 0);
 
 /* Y at X3 */
 
-color ([.7, .5, .2, 1]) BY (-1, -1, x3, ya, y3 - ya);
+color ([.7, .5, .2, 1]) BY (-1, -1, x3, ya, y4 - ya, be, 0);
 
 bww = (x3 - x1 - bw) - (idw + be2);
 
@@ -364,9 +372,13 @@ BY (20, 21, x3, y0, y3 - y0);
 
 BY ( 0, 14, x3, y3, y3 - y3, bww);
 
+/* Y at XJ */
+
+color ([.7, .5, .2, 1]) BY (-1, -1, xj, y0, y4 - y0, 0, 0);
+
 /* Y at X4 */
 
-color ([.7, .5, .2, 1]) BY (-1, -1, x4, y0, y3 - y0);
+color ([.7, .5, .2, 1]) BY (-1, -1, x4, y0, y4 - y0);
 
 rdw = 1000;
 
@@ -384,6 +396,10 @@ BY ( 0, 17, x4, y3, y3 - y3, (y3 - y1 - bw) - (rdw + odw));
 
 BY ( 0,  7, x4, y4, y4 - y4);
 BY (24, 30, x4, y4, y4 - y4);
+
+/* Y at XK */
+
+color ([.7, .5, .2, 1]) BY (-1, -1, xk, y1, y4 - y1, 0, 0);
 
 /* Y at X5 */
 
