@@ -93,8 +93,8 @@ gy = 2000 + bw;
 x0 = -hbw; x1 = x0 + gx; x2 = x1 + gx; x3 = x2 + gx; x4 = x3 + gx; x5 = x4 + gx;
 y0 = -hbw; y1 = y0 + gy; y2 = y1 + gy; y3 = y2 + gy; y4 = y3 + gy;
 
-xa = x2 - gx / 2;
-xb = x2 + gx / 2;
+xa = (x1 + x2) / 2;
+xb = (x2 + x3) / 2;
 
 ya = -1500;
 
